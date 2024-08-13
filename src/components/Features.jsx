@@ -39,7 +39,7 @@ const Features = () => {
   loop
   muted
   playsInline
-  className="h-full w-full object-cover"
+  className="h-full w-full object-cover pointer-events-none"
   onError={(e) => console.error("Video playback error:", e)}
 />
 
