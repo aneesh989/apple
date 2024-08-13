@@ -38,7 +38,7 @@ const Features = () => {
           autoPlay
           loop
           muted
-          className="h-full w-full object-cover"
+          className="relative h-full w-full object-cover"
         />
     <section className="h-full common-padding bg-zinc relative overflow-hidden">
       <div className="screen-max-wdith">
