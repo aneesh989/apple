@@ -33,13 +33,16 @@ const Features = () => {
 
   return (
     <>
-     <video
-          src="https://www.apple.com/105/media/us/apple-vision-pro/2023/7e268c13-eb22-493d-a860-f0637bacb569/anim/visionos/large.mp4"
-          autoPlay
-          loop
-          muted
-          className="relative h-full w-full object-cover"
-        />
+   <video
+  src="https://www.apple.com/105/media/us/apple-vision-pro/2023/7e268c13-eb22-493d-a860-f0637bacb569/anim/visionos/large.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="h-full w-full object-cover"
+  onError={(e) => console.error("Video playback error:", e)}
+/>
+
     <section className="h-full common-padding bg-zinc relative overflow-hidden">
       <div className="screen-max-wdith">
         <div className="mb-12 w-full">
