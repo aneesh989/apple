@@ -1,49 +1,56 @@
+import { useEffect } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 import { heroVideo } from "../Utils";
+import { animateWithGsap } from "../Utils/animations";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  useGSAP(() => {
-    gsap.to(".hero-title", {
-      opacity: 1,
+  useEffect(() => {
+    animateWithGsap('.hero-title', {
       y: 50,
-      delay: 1.5,
-      scrollTrigger: {
-        scrub: true,
-        trigger: ".hero-title",
-        start: "-10% bottom",
-      },
+      opacity: 1,
+      ease: "power3.out",
+      duration: 1,
     });
-    gsap.to("#cta", {
+    animateWithGsap('#cta', {
       opacity: 1,
       y: -50,
-      delay: 2,
-      scrollTrigger: {
-        scrub: true,
-        trigger: "#cta",
-        start: "-10% bottom",
-      },
+      
     });
+
+    const videoElement = document.getElementById('hero-video');
+    videoElement.setAttribute('src', heroVideo);
+
+    // Manually fetch video to improve load time
+    fetch(heroVideo)
+      .then(response => response.blob())
+      .then(blob => {
+        videoElement.src = URL.createObjectURL(blob);
+        videoElement.play();
+      });
   }, []);
 
   return (
-    <section className="w-full bg-black relative">
+    <section className="bg-black relative">
       <div className="h-5/6 w-full flex-center flex-col">
         <p className="hero-title">iPhone 16</p>
-        <div className="md:w-10/12 w-9/12">
+        <div className="w-full">
           <video
+            id="hero-video"
             className="pointer-events-none"
             autoPlay
             muted
             loop
             playsInline
-            key={heroVideo}
+            preload="auto"
           >
-            <source src={heroVideo} type="video/mp4" />
+            <source type="video/mp4" />
           </video>
         </div>
       </div>
-      <div id="cta" className="  flex flex-col items-center opacity-0">
+      <div id="cta" className="flex flex-col items-center opacity-0">
         <a href="#highlights" className="btn">
           Buy
         </a>

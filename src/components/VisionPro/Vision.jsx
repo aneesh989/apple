@@ -144,16 +144,7 @@ const Vision = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  useEffect(() => {
-  const handleResize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    render(); // Re-render the current frame
-  };
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
-
+  
 
   return (
     <div >
@@ -161,7 +152,7 @@ const Vision = () => {
       <div className="bg-[#f5f5f7] h-full text-center flex flex-col justify-center items-center  p-0 md:p-12">
         <h1 className="text-xl font-bold text-black mb-2">Design</h1>
         <h1 className="text-3xl font-bold text-black mb-2">Designed by Apple.</h1>
-        <p className="text-xs md:text-xl text-black">
+        <p className="text-xl text-black">
           Apple Vision Pro is the result of decades of experience designing
           high‑performance, mobile, and wearable devices — culminating in the
           most ambitious product Apple has ever created. Vision Pro integrates

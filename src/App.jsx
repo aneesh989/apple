@@ -1,6 +1,7 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import Lottie from 'react-lottie';
 import lottieAnimation from './constants/loader.json'; // Adjust the path as needed
+import { Analytics } from "@vercel/analytics/react"
 
 // Lazy load components
 const Navbar = lazy(() => import('./components/Navbar'));
@@ -36,19 +37,33 @@ const loaderStyle = {
 };
 
 const App = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000); // Adjust the delay as needed to ensure all components are loaded
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Suspense fallback={<Loader />}>
-      <main className="bg-black">
-        <Navbar />
-        <Vision />
-        <Hero />
-        <Highlights />
-        <Headphone />
-        <HeroLightpass />
-        <Model />
-        <Features />
-        <Footer />
-      </main>
+      {isLoaded ? (
+        <main className="bg-black">
+          <Navbar />
+          <Vision />
+          <Hero />
+          <Highlights />
+          <Headphone />
+          <HeroLightpass />
+          <Model />
+          <Features />
+          <Footer />
+        </main>
+      ) : (
+        <Loader />
+      )}
     </Suspense>
   );
 };
