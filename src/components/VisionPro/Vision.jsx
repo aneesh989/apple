@@ -144,6 +144,16 @@ const Vision = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  useEffect(() => {
+  const handleResize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    render(); // Re-render the current frame
+  };
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
   return (
     <div >

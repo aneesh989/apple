@@ -61,7 +61,6 @@ const Features = () => {
                 <source src={exploreVideo} type="video/mp4" />
               </video>
             </div>
-
             <div className="flex flex-col w-full relative">
               <div className="feature-video-container">
                 <div className="overflow-hidden flex-1 h-[50vh]">
@@ -71,7 +70,6 @@ const Features = () => {
                   <img src={explore2Img} alt="titanium 2" className="feature-video g_grow" />
                 </div>
               </div>
-
               <div className="feature-text-container">
                 <div className="flex-1 flex-center">
                   <p className="feature-text g_text">
@@ -82,7 +80,6 @@ const Features = () => {
                     using the same alloy that spacecrafts use for missions to Mars.
                   </p>
                 </div>
-
                 <div className="flex-1 flex-center">
                   <p className="feature-text g_text">
                     Titanium has one of the best strength-to-weight ratios of any metal, making these our {' '}
@@ -92,8 +89,6 @@ const Features = () => {
                     You'll notice the difference the moment you pick one up.
                   </p>
                 </div>
-
-
               </div>
             </div>
           </div>
